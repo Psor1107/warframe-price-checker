@@ -12,13 +12,12 @@ with open('data.json', 'w') as f:
 
 orders = data['payload']['orders']
 
-total = {}
+#total = []
+#for order in orders:
+#   total.append(order['platinum'])
 
-length = len(orders)
-for x in range(length):
-   total[x] = orders[x]['platinum']
+total = [order['platinum'] for order in orders]
 
-average_price = mean(total.values())
-
-print("These are the values listed for the item:\n", sorted(total.values()))
-print("The average price for the item is: %.2f" % average_price)
+average_price = mean(total)
+print("These are the values listed for the item:\n", sorted(total))
+print(f"The average price for the item is: {average_price:.2f}")
